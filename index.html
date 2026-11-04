@@ -30,6 +30,7 @@ h1{font-size:clamp(36px,5.4vw,58px);max-width:18ch}
 .model li:last-child .n{color:var(--clay)}
 .model h3{font-size:21px;margin:6px 0 6px}
 .model p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.45}
+.tx{margin:14px 0 0;font-size:16px;line-height:1.5}.tx b{color:var(--muted);font-weight:600}
 details.more{margin-top:18px}details.more summary{cursor:pointer;color:var(--muted);font-size:15px;font-weight:600}
 .model li{animation:rise .7s ease both}.model li:nth-child(2){animation-delay:.15s}.model li:nth-child(3){animation-delay:.3s}.player{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.model li,.player{animation:none}}
 nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line);margin-top:34px}
@@ -108,8 +109,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <h2>Source authorization</h2>
 <p class="sub">Before anything is generated, the instructor decides what the AI may build a quiz from, and says what the files cannot.</p>
 <div class="player"><video controls playsinline preload="metadata" poster="media/01.jpg" src="media/01-source-authorization.mp4" aria-label="Source authorization demonstration"></video></div>
+<p class="tx"><b>Narration:</b> Before anything is generated, the instructor decides which course files the AI may use, and records why a chapter is left out.</p>
 <div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
+<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="24"><time>0:24</time><span>Standing course context goes in <q>Instructions for TRACE</q>: a third-year cohort, mixed Arabic and English.</span></button></li>
 <li><button data-t="84"><time>1:24</time><span>A quiz is requested, and the instructor chooses which files it may be built from. One chapter is selected.</span></button></li>
 <li><button data-t="90"><time>1:30</time><span>A second chapter is left out, with a recorded reason: <q>We moved this chapter to after the midterm.</q></span></button></li>
@@ -127,8 +129,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <h2>Artifact authorization</h2>
 <p class="sub">An AI-generated assessment stays a draft until the instructor accepts each question. Acceptance attaches to a version, not to the assessment.</p>
 <div class="player"><video controls playsinline preload="metadata" poster="media/02.jpg" src="media/02-artifact-authorization.mp4" aria-label="Artifact authorization demonstration"></video></div>
+<p class="tx"><b>Narration:</b> Every AI question starts as a draft. Nothing counts until the instructor approves it, and an edited question needs approval again.</p>
 <div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
+<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="18"><time>0:18</time><span>Every question is marked <q>Needs review</q>, and the footer reads <q>0 of 5 approved</q>.</span></button></li>
 <li><button data-t="42"><time>0:42</time><span>One question is excluded with a stated reason: <q>Too easy</q>.</span></button></li>
 <li><button data-t="105"><time>1:45</time><span>The instructor asks TRACE to rewrite a recall question, using a reason drawn from the lab rather than the slides.</span></button></li>
@@ -147,8 +150,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <h2>Student submission</h2>
 <p class="sub">The student's side of the same quiz. This is short context for the next video.</p>
 <div class="player"><video controls playsinline preload="metadata" poster="media/03a.jpg" src="media/03a-student-submission.mp4" aria-label="Student submission demonstration"></video></div>
+<p class="tx"><b>Narration:</b> The student answers the quiz, using a method from the lab, not the slides.</p>
 <div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
+<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="27"><time>0:27</time><span>The student receives the quiz and types answers directly into the form.</span></button></li>
 <li><button data-t="267"><time>4:27</time><span>On the last question, the student answers with a technique from the lab: <q>In the lab we walked</q> through it. This answer is disputed later.</span></button></li>
 </ol>
@@ -161,8 +165,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <h2>Consequence authorization</h2>
 <p class="sub">AI proposes a grade within seconds, but the student gets nothing until the instructor releases it. The student can then ask for the evidence to be reconsidered.</p>
 <div class="player"><video controls playsinline preload="metadata" poster="media/03b.jpg" src="media/03b-consequence-authorization.mp4" aria-label="Consequence authorization demonstration"></video></div>
+<p class="tx"><b>Narration:</b> The AI proposes a grade, but the student sees nothing until the instructor releases it. The student can then ask to reconsider the evidence, and the grade can be withdrawn and changed.</p>
 <div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
+<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="6"><time>0:06</time><span>The student sees <q>With your instructor</q>, with no mark and no feedback.</span></button></li>
 <li><button data-t="15"><time>0:15</time><span>The instructor sees <q>Reviewed &middot; Not released</q>. TRACE has proposed a grade, and no notification has been sent.</span></button></li>
 <li><button data-t="39"><time>0:39</time><span>The AI's proposal is open for inspection: 8 of 12, with feedback for each question.</span></button></li>
