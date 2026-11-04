@@ -4,7 +4,7 @@
 <style>
 :root{--bg:#faf8f4;--card:#fffefb;--ink:#1e2b3a;--mute:#5d6874;--line:#e4dfd5;--sage:#5b6a58;--clay:#9a6248}
 @media (prefers-color-scheme:dark){:root{--bg:#14191f;--card:#1b222a;--ink:#e8e6e1;--mute:#a3adb7;--line:#2e3741;--sage:#a9bca4;--clay:#d79c80}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
 h1,h2{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
 .w{max-width:1040px;margin:0 auto;padding:0 20px}
 header{padding:56px 0 8px;text-align:center}h1{font-size:clamp(34px,5vw,52px)}
@@ -25,19 +25,19 @@ section{margin:56px 0 0}h2{font-size:28px;margin-bottom:6px}.k{font-size:13px;le
 section p{color:var(--mute);margin:0 0 14px}
 video{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#10151a;aspect-ratio:1918/995;box-shadow:0 12px 32px rgba(30,43,58,.08)}
 .tr{margin-top:12px}.tr summary{cursor:pointer;color:var(--mute);font-weight:600;font-size:15px}.tr ol{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--line)}.tr li{border-bottom:1px solid var(--line)}.tr button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:52px 1fr;width:100%;padding:9px 6px;cursor:pointer;border-radius:8px}.tr button:hover,.tr li.now button{background:color-mix(in srgb,var(--sage) 14%,transparent)}.tr time{color:var(--sage);font-weight:600;font-size:14px;font-variant-numeric:tabular-nums}.tr span{font-size:15.5px}
-.cam{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 18px 20px;margin:36px 0 0;overflow:hidden}
+.cam{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 18px 20px;margin:32px 0 0}
 .cam h2{font-size:22px;text-align:center;margin-bottom:18px}
-.row{display:grid;grid-template-columns:repeat(9,auto);align-items:center;justify-content:center;gap:6px}
-.bx{border:1.5px solid var(--line);border-radius:12px;padding:12px 10px;width:132px;text-align:center;font-size:13px;color:var(--mute);opacity:.25;transition:all .5s}
+.row{display:flex;align-items:stretch;justify-content:center;gap:8px}
+.bx{flex:1 1 0;min-width:0;border:1.5px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;font-size:13px;line-height:1.35;color:var(--mute);opacity:.55;transition:opacity .5s,box-shadow .5s,border-color .5s;display:flex;flex-direction:column;justify-content:center}
 .bx b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:3px}.bx.dash{border-style:dashed}
-.gt{background:var(--sage);color:#fff;border-radius:999px;padding:8px 10px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-align:center;width:96px;opacity:.2;transition:all .5s}.gt.cq{background:var(--clay)}
-.on{opacity:1!important}.bx.on{border-color:var(--ink);box-shadow:0 8px 22px rgba(30,43,58,.12)}
-.cap{text-align:center;min-height:48px;margin:18px auto 0;max-width:640px;font-size:16px}
-.tl{display:flex;justify-content:space-between;margin:14px 6% 0;position:relative;font-size:12px;color:var(--mute)}
-.tl::before{content:"";position:absolute;left:0;right:0;top:6px;height:2px;background:var(--line)}
-.tl span{position:relative;padding-top:18px;opacity:.25;transition:opacity .5s}.tl span::before{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--sage)}.tl span.cq::before{background:var(--clay)}
-.ctl{text-align:center;margin-top:12px}.ctl button{all:unset;cursor:pointer;font-size:14px;color:var(--mute);padding:4px 12px;border:1px solid var(--line);border-radius:999px}
-@media (max-width:900px){.row{grid-template-columns:1fr;justify-items:center}.gt{width:150px}.bx{width:240px}}
+.gt{flex:0 0 auto;align-self:center;background:var(--sage);color:#fff;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:700;letter-spacing:.04em;text-align:center;opacity:.5;transition:opacity .5s,transform .5s}.gt.cq{background:var(--clay)}
+.on{opacity:1!important}.bx.on{border-color:var(--ink);box-shadow:0 8px 22px rgba(30,43,58,.12)}.gt.on{transform:scale(1.06)}
+.cap{text-align:center;min-height:52px;margin:18px auto 0;max-width:640px;font-size:16.5px;color:var(--ink)}
+.tl{display:grid;grid-template-columns:repeat(4,1fr);margin:18px 0 0;position:relative;font-size:12.5px;color:var(--mute);text-align:center}
+.tl::before{content:"";position:absolute;left:12.5%;right:12.5%;top:6px;height:2px;background:var(--line)}
+.tl span{position:relative;padding-top:20px;opacity:.5;transition:opacity .5s}.tl span::before{content:"";position:absolute;top:0;left:50%;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--sage)}.tl span.cq::before{background:var(--clay)}
+.ctl{text-align:center;margin-top:12px}.ctl button{all:unset;cursor:pointer;font-size:14px;color:var(--mute);padding:5px 14px;border:1px solid var(--line);border-radius:999px}.ctl button:focus-visible{outline:2px solid var(--sage)}
+@media (max-width:820px){.row{flex-direction:column;align-items:center}.bx{flex:none;width:100%;max-width:340px}.gt{font-size:12px;padding:6px 14px}.tl{font-size:11.5px}.cam{padding:20px 12px 16px}}
 footer{margin:56px 0 0;padding:20px 0 44px;border-top:1px solid var(--line);color:var(--mute);font-size:14px;text-align:center}
 </style></head><body>
 <div class="w">
@@ -50,7 +50,6 @@ footer{margin:56px 0 0;padding:20px 0 44px;border-top:1px solid var(--line);colo
 <div class="bx dash" id="b2"><b>Provisional AI work</b>v1 · v2 · v3, drafts only</div>
 <div class="gt" id="g2">2 ARTIFACT</div>
 <div class="bx" id="b3"><b>Official artifact</b>v3 adopted</div>
-<div class="gt" id="g2b" style="visibility:hidden"></div>
 <div class="bx" id="b4"><b>Grading</b>reviewed, not released</div>
 <div class="gt cq" id="g3">3 CONSEQUENCE</div>
 <div class="bx" id="b5"><b>Student</b>8/10 released, can appeal</div>
