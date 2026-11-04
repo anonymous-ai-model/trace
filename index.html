@@ -1,232 +1,53 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="referrer" content="no-referrer">
-<title>TRACE System Demonstration</title>
-<meta name="description" content="Silent video walkthroughs of the TRACE prototype, using demonstration data.">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>TRACE Demonstration</title>
 <style>
-:root{--bg:#faf8f4;--surface:#fffefb;--ink:#1e2b3a;--muted:#5d6874;--line:#e4dfd5;--sage:#5b6a58;--sage-soft:#e9ede5;--clay:#9a6248;--clay-soft:#f5ebe4;--focus:#2f6f8f;--shadow:0 1px 2px rgba(30,43,58,.06),0 12px 32px rgba(30,43,58,.07)}
-@media (prefers-color-scheme:dark){:root{--bg:#14191f;--surface:#1b222a;--ink:#e8e6e1;--muted:#a3adb7;--line:#2e3741;--sage:#a9bca4;--sage-soft:#243028;--clay:#d79c80;--clay-soft:#33261f;--focus:#7fc0dd;--shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.28)}}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
-h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-weight:600;letter-spacing:-.012em;line-height:1.15;margin:0}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-header.hero{padding:72px 0 44px}
-.eyebrow{font-size:13px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 16px}
-h1{font-size:clamp(36px,5.4vw,58px);max-width:18ch}
-.lede{font-size:20px;line-height:1.5;color:var(--muted);max-width:62ch;margin:20px 0 0}
-.meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin:26px 0 0;padding:0;list-style:none;color:var(--muted);font-size:15px}
-.meta b{color:var(--ink);font-weight:600}
-.model{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:0 0 20px;padding:0;list-style:none}
-.model li{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
-.model .n{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--sage)}
-.model li:last-child .n{color:var(--clay)}
-.model h3{font-size:21px;margin:6px 0 6px}
-.model p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.45}
-.tx{margin:14px 0 0;font-size:16px;line-height:1.5}.tx b{color:var(--muted);font-weight:600}
-details.more{margin-top:18px}details.more summary{cursor:pointer;color:var(--muted);font-size:15px;font-weight:600}
-.model li{animation:rise .7s ease both}.model li:nth-child(2){animation-delay:.15s}.model li:nth-child(3){animation-delay:.3s}.player{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.model li,.player{animation:none}}
-nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line);margin-top:34px}
-nav.toc ul{display:flex;gap:4px;margin:0;padding:9px 0;list-style:none;overflow-x:auto;scrollbar-width:none}
-nav.toc a{display:block;white-space:nowrap;text-decoration:none;font-size:14.5px;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:999px}
-nav.toc a:hover,nav.toc a.on{background:var(--sage-soft);color:var(--ink)}
-section.ch{padding:60px 0 8px;scroll-margin-top:50px}
-.kick{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--sage);margin:0 0 8px}
-.conseq .kick{color:var(--clay)}
-h2{font-size:clamp(28px,3.6vw,38px)}
-.sub{color:var(--muted);margin:10px 0 24px;max-width:70ch}
-.player{background:#10151a;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
-.player video{display:block;width:100%;height:auto;aspect-ratio:1918/995;background:#10151a}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 2px 0;color:var(--muted);font-size:14px;flex-wrap:wrap}
-.speed{display:inline-flex;gap:2px;align-items:center}
-.speed span{margin-right:6px}
-.speed button{all:unset;cursor:pointer;padding:3px 9px;border-radius:7px;font-size:13.5px;font-variant-numeric:tabular-nums}
-.speed button:hover{background:var(--sage-soft)}
-.speed button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
-.speed button:focus-visible{outline:2px solid var(--focus)}
-.grid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(0,1fr);gap:34px;margin-top:26px;align-items:start}
-ol.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-ol.steps li{border-bottom:1px solid var(--line)}
-ol.steps button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:54px 1fr;gap:6px;width:100%;padding:12px 8px;cursor:pointer;border-radius:8px}
-ol.steps button:hover{background:var(--sage-soft)}
-ol.steps button:focus-visible{outline:2px solid var(--focus)}
-ol.steps li.now button{background:var(--sage-soft)}
-ol.steps time{font-size:13.5px;font-variant-numeric:tabular-nums;color:var(--sage);font-weight:600;padding-top:3px}
-.conseq ol.steps time{color:var(--clay)}
-ol.steps span{font-size:16px;line-height:1.48}
-q{quotes:"\201C" "\201D"}
-aside.why{background:var(--sage-soft);border-radius:14px;padding:20px 22px;font-size:16px;line-height:1.5}
-.conseq aside.why{background:var(--clay-soft)}
-aside.why h3{font-size:19px;margin:0 0 8px}
-aside.why p{margin:0}
-aside.why p+p{margin-top:10px}
-.limits{margin:70px 0 0;padding:30px 0 0;border-top:1px solid var(--line)}
-.limits h2{font-size:28px;margin-bottom:14px}
-.limits ul{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px 34px}
-.limits li{padding-left:18px;position:relative;line-height:1.5;font-size:16px}
-.limits li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--clay)}
-footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);color:var(--muted);font-size:14.5px}
-@media (max-width:860px){.model{grid-template-columns:1fr}.grid{grid-template-columns:1fr;gap:22px}.limits ul{grid-template-columns:1fr}header.hero{padding:44px 0 28px}section.ch{padding-top:44px}.wrap{padding:0 16px}.lede{font-size:18px}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="hero">
-<p class="eyebrow">Supplementary material for anonymous peer review</p>
-<h1>TRACE, a prototype for authorizing AI work in a course</h1>
-<p class="lede">These narrated videos follow one quiz from course materials to a released grade and a student's challenge of it. They show how a course-grounded workspace can represent three decisions that a single "approve" step would collapse.</p>
-<ul class="meta">
-<li><b>4</b> narrated videos</li><li><b>28</b> minutes</li><li><b>Demonstration data:</b> all names and records are synthetic</li>
-</ul>
-</header>
-
-<ol class="model" aria-label="The three authorization decisions">
-<li><div class="n">1 &middot; Source</div><h3>What may AI use?</h3><p>Available course information becomes permitted evidence for one task.</p></li>
-<li><div class="n">2 &middot; Artifact</div><h3>What does the course adopt?</h3><p>A provisional AI output becomes an official version someone stands behind.</p></li>
-<li><div class="n">3 &middot; Consequence</div><h3>What may affect a student?</h3><p>Adopted work is released or applied, and can be withdrawn and reconsidered.</p></li>
-</ol>
+:root{--bg:#faf8f4;--card:#fffefb;--ink:#1e2b3a;--mute:#5d6874;--line:#e4dfd5;--sage:#5b6a58;--clay:#9a6248}
+@media (prefers-color-scheme:dark){:root{--bg:#14191f;--card:#1b222a;--ink:#e8e6e1;--mute:#a3adb7;--line:#2e3741;--sage:#a9bca4;--clay:#d79c80}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+h1,h2{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:600;margin:0;letter-spacing:-.01em}
+.w{max-width:1040px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 8px;text-align:center}h1{font-size:clamp(34px,5vw,52px)}
+header p{color:var(--mute);margin:10px 0 0}
+.flow{display:flex;align-items:center;justify-content:center;gap:0;margin:44px 0 18px;flex-wrap:wrap}
+.node{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:18px 20px;width:200px;text-align:center;opacity:.35;transform:scale(.96);transition:all .5s}
+.node b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-size:20px}.node span{font-size:14px;color:var(--mute)}
+.node.on{opacity:1;transform:scale(1);border-color:var(--sage);box-shadow:0 10px 28px rgba(30,43,58,.12)}
+.node.c.on{border-color:var(--clay)}
+.arrow{width:56px;height:2px;background:var(--line);position:relative;overflow:hidden}
+.arrow i{position:absolute;inset:0;background:var(--sage);transform:translateX(-100%);transition:transform .6s}
+.arrow.on i{transform:none}
+.doc{font-size:30px;line-height:1;margin-bottom:6px}
+.back{text-align:center;color:var(--clay);font-size:14px;height:22px;opacity:0;transition:opacity .5s}.back.on{opacity:1}
+@media (max-width:760px){.arrow{width:2px;height:28px}.arrow i{transform:translateY(-100%)}.flow{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){.node,.arrow i,.back{transition:none}}
+section{margin:56px 0 0}h2{font-size:28px;margin-bottom:6px}.k{font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--sage)}.cq .k{color:var(--clay)}
+section p{color:var(--mute);margin:0 0 14px}
+video{display:block;width:100%;border-radius:14px;border:1px solid var(--line);background:#10151a;aspect-ratio:1918/995;box-shadow:0 12px 32px rgba(30,43,58,.08)}
+footer{margin:56px 0 0;padding:20px 0 44px;border-top:1px solid var(--line);color:var(--mute);font-size:14px;text-align:center}
+</style></head><body>
+<div class="w">
+<header><h1>TRACE</h1><p>How AI-produced coursework becomes official.</p></header>
+<div class="flow" aria-label="Animated diagram of the three decisions">
+<div class="node" id="n1"><div class="doc">📄</div><b>Source</b><span>What may AI use?</span></div>
+<div class="arrow" id="a1"><i></i></div>
+<div class="node" id="n2"><div class="doc">✓</div><b>Artifact</b><span>What does the course adopt?</span></div>
+<div class="arrow" id="a2"><i></i></div>
+<div class="node c" id="n3"><div class="doc">🎓</div><b>Consequence</b><span>What reaches a student?</span></div>
 </div>
+<div class="back" id="bk">↺ The student can ask for reconsideration</div>
 
-<nav class="toc" aria-label="Videos"><div class="wrap"><ul>
-<li><a href="#source">1. Source authorization</a></li>
-<li><a href="#artifact">2. Artifact authorization</a></li>
-<li><a href="#student">3a. Student submission</a></li>
-<li><a href="#consequence">3b. Consequence authorization</a></li>
-<li><a href="#limits">What this does not show</a></li>
-</ul></div></nav>
+<section><div class="k">1 · Source</div><h2>The instructor chooses the evidence</h2><p>Which files the AI may use, and why one is left out.</p><video controls playsinline preload="metadata" poster="media/01.jpg" src="media/01-source-authorization.mp4"></video></section>
+<section><div class="k">2 · Artifact</div><h2>Drafts stay drafts until approved</h2><p>Each question is approved one by one; an edited question needs approval again.</p><video controls playsinline preload="metadata" poster="media/02.jpg" src="media/02-artifact-authorization.mp4"></video></section>
+<section><div class="k">3a · Student</div><h2>The student answers</h2><p>Using a method from the lab, not the slides.</p><video controls playsinline preload="metadata" poster="media/03a.jpg" src="media/03a-student-submission.mp4"></video></section>
+<section class="cq"><div class="k">3b · Consequence</div><h2>Release, then reconsideration</h2><p>The grade is held until released, and can be withdrawn and changed.</p><video controls playsinline preload="metadata" poster="media/03b.jpg" src="media/03b-consequence-authorization.mp4"></video></section>
 
-<main class="wrap">
-
-<section class="ch" id="source">
-<p class="kick">Video 1 &middot; 6:11</p>
-<h2>Source authorization</h2>
-<p class="sub">Before anything is generated, the instructor decides what the AI may build a quiz from, and says what the files cannot.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/01.jpg" src="media/01-source-authorization.mp4" aria-label="Source authorization demonstration"></video></div>
-<p class="tx"><b>Narration:</b> Before anything is generated, the instructor decides which course files the AI may use, and records why a chapter is left out.</p>
-<div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
-<li><button data-t="24"><time>0:24</time><span>Standing course context goes in <q>Instructions for TRACE</q>: a third-year cohort, mixed Arabic and English.</span></button></li>
-<li><button data-t="84"><time>1:24</time><span>A quiz is requested, and the instructor chooses which files it may be built from. One chapter is selected.</span></button></li>
-<li><button data-t="90"><time>1:30</time><span>A second chapter is left out, with a recorded reason: <q>We moved this chapter to after the midterm.</q></span></button></li>
-<li><button data-t="165"><time>2:45</time><span>Under <q>Advanced options</q>, generation is held to <q>From sources only</q> rather than allowed extra knowledge.</span></button></li>
-<li><button data-t="177"><time>2:57</time><span>Task guidance adds what the slides cannot carry: <q>We practiced these in the lab</q>, so ask students to apply them.</span></button></li>
-<li><button data-t="345"><time>5:45</time><span>Each generated question can be checked against the passage that supports it, under <q>Sources</q>.</span></button></li>
-<li><button data-t="363"><time>6:03</time><span>The <q>Authorization history</q> records what was authorized, what was left out and why, and who decided.</span></button></li>
-</ol>
-<aside class="why"><h3>Why it matters</h3><p>The excluded chapter is real course material that a retrieval system could use. Leaving it out is a teaching judgment that exists nowhere in the files.</p><p>Authorizing a source records permission. It does not prove the choice was right.</p></aside>
-</div></details>
-</section>
-
-<section class="ch" id="artifact">
-<p class="kick">Video 2 &middot; 7:02</p>
-<h2>Artifact authorization</h2>
-<p class="sub">An AI-generated assessment stays a draft until the instructor accepts each question. Acceptance attaches to a version, not to the assessment.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/02.jpg" src="media/02-artifact-authorization.mp4" aria-label="Artifact authorization demonstration"></video></div>
-<p class="tx"><b>Narration:</b> Every AI question starts as a draft. Nothing counts until the instructor approves it, and an edited question needs approval again.</p>
-<div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
-<li><button data-t="18"><time>0:18</time><span>Every question is marked <q>Needs review</q>, and the footer reads <q>0 of 5 approved</q>.</span></button></li>
-<li><button data-t="42"><time>0:42</time><span>One question is excluded with a stated reason: <q>Too easy</q>.</span></button></li>
-<li><button data-t="105"><time>1:45</time><span>The instructor asks TRACE to rewrite a recall question, using a reason drawn from the lab rather than the slides.</span></button></li>
-<li><button data-t="228"><time>3:48</time><span>Once every remaining question is approved, the footer changes to <q>Ready to publish</q>.</span></button></li>
-<li><button data-t="252"><time>4:12</time><span>The instructor then asks TRACE to change an approved question.</span></button></li>
-<li><button data-t="303"><time>5:03</time><span>The changed question loses its approval, and the footer falls back to <q>3 of 4 approved</q>.</span></button></li>
-<li><button data-t="363"><time>6:03</time><span>Publishing is a separate step, with its own choices of recipients and due date.</span></button></li>
-<li><button data-t="414"><time>6:54</time><span>The history records artifact authorization alongside the earlier decisions.</span></button></li>
-</ol>
-<aside class="why"><h3>Why it matters</h3><p>Generating work and accepting it are different actions. If AI later touches an approved question, the earlier approval does not carry over.</p><p>Approval records who stood behind a version. It does not certify that the version is correct.</p></aside>
-</div></details>
-</section>
-
-<section class="ch" id="student">
-<p class="kick">Video 3a &middot; 5:29</p>
-<h2>Student submission</h2>
-<p class="sub">The student's side of the same quiz. This is short context for the next video.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/03a.jpg" src="media/03a-student-submission.mp4" aria-label="Student submission demonstration"></video></div>
-<p class="tx"><b>Narration:</b> The student answers the quiz, using a method from the lab, not the slides.</p>
-<div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
-<li><button data-t="27"><time>0:27</time><span>The student receives the quiz and types answers directly into the form.</span></button></li>
-<li><button data-t="267"><time>4:27</time><span>On the last question, the student answers with a technique from the lab: <q>In the lab we walked</q> through it. This answer is disputed later.</span></button></li>
-</ol>
-<aside class="why"><h3>Watch for</h3><p>The student's reasoning comes from a lab session, not from the slides. That gap is what the next video turns on.</p></aside>
-</div></details>
-</section>
-
-<section class="ch conseq" id="consequence">
-<p class="kick">Video 3b &middot; 9:56</p>
-<h2>Consequence authorization</h2>
-<p class="sub">AI proposes a grade within seconds, but the student gets nothing until the instructor releases it. The student can then ask for the evidence to be reconsidered.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/03b.jpg" src="media/03b-consequence-authorization.mp4" aria-label="Consequence authorization demonstration"></video></div>
-<p class="tx"><b>Narration:</b> The AI proposes a grade, but the student sees nothing until the instructor releases it. The student can then ask to reconsider the evidence, and the grade can be withdrawn and changed.</p>
-<div class="bar"><span></span><span class="speed"></span></div>
-<details class="more"><summary>Full transcript of steps</summary><div class="grid"><ol class="steps">
-<li><button data-t="6"><time>0:06</time><span>The student sees <q>With your instructor</q>, with no mark and no feedback.</span></button></li>
-<li><button data-t="15"><time>0:15</time><span>The instructor sees <q>Reviewed &middot; Not released</q>. TRACE has proposed a grade, and no notification has been sent.</span></button></li>
-<li><button data-t="39"><time>0:39</time><span>The AI's proposal is open for inspection: 8 of 12, with feedback for each question.</span></button></li>
-<li><button data-t="126"><time>2:06</time><span>The instructor adjusts the grade and rewrites feedback. Saving does not release anything.</span></button></li>
-<li><button data-t="189"><time>3:09</time><span><q>Authorize &amp; release</q> is the separate decision that makes the grade consequential.</span></button></li>
-<li><button data-t="204"><time>3:24</time><span>The student now sees 9 of 12, that the instructor reviewed it, that AI assisted, and who released it.</span></button></li>
-<li><button data-t="255"><time>4:15</time><span>The student requests reconsideration and chooses <q>The evidence used</q>: they answered from the lab.</span></button></li>
-<li><button data-t="276"><time>4:36</time><span>The instructor sees the request in the student's own words, and can <q>Withdraw for review</q>.</span></button></li>
-<li><button data-t="327"><time>5:27</time><span>The mark disappears from the student's screen while it is under review.</span></button></li>
-<li><button data-t="492"><time>8:12</time><span>The instructor revises the grade to 10 of 12 and releases it again.</span></button></li>
-<li><button data-t="516"><time>8:36</time><span>The student sees: <q>Your instructor reviewed your request and changed the grade</q>.</span></button></li>
-<li><button data-t="588"><time>9:48</time><span>The history records each release, the request, and the withdrawal.</span></button></li>
-</ol>
-<aside class="why"><h3>Why it matters</h3><p>The student supplied classroom context the marking guide never held, and the system let that change the outcome.</p><p>Here the request returns to the instructor who approved the grade. That is a limit of this prototype, not a solution to recourse.</p></aside>
-</div></details>
-</section>
-
-<section class="limits" id="limits">
-<h2>What this does not show</h2>
-<ul>
-<li>TRACE has not been evaluated. These videos show functionality, not evidence that it improves grading, fairness, or recourse.</li>
-<li>Reconsideration goes back to the approving instructor. There is no independent route.</li>
-<li>Release does not verify that a review took place, so approval could become routine.</li>
-<li>Grading uses the submission, answer key, and rubric. There is no per-grade record of evidence, and students cannot see the authorization history.</li>
-</ul>
-</section>
-</main>
-
-<div class="wrap"><footer>Prepared for anonymous peer review. All people, courses, and records shown are demonstration data, not a live course. Dates and addresses visible on screen come from the demonstration environment.</footer></div>
-
+<footer>Demonstration data only. Prepared for anonymous review.</footer>
+</div>
 <script>
-document.querySelectorAll('section.ch').forEach(function(sec){
-  var v=sec.querySelector('video'),items=[].slice.call(sec.querySelectorAll('ol.steps li')),sp=sec.querySelector('.speed');
-  sp.innerHTML='<span>Speed</span>';
-  [1,1.5,2].forEach(function(r){
-    var b=document.createElement('button');b.type='button';b.textContent=r+'x';b.setAttribute('aria-pressed',r===1);b.setAttribute('aria-label','Play at '+r+' times speed');
-    b.onclick=function(){v.playbackRate=r;sp.querySelectorAll('button').forEach(function(o){o.setAttribute('aria-pressed',o===b)})};
-    sp.appendChild(b);
-  });
-  items.forEach(function(li){
-    var b=li.querySelector('button');
-    b.onclick=function(){
-      var t=+b.dataset.t;
-      function go(){v.currentTime=t;var p=v.play();if(p&&p.catch)p.catch(function(){})}
-      if(v.readyState>=1)go();else{v.addEventListener('loadedmetadata',go,{once:true});v.load()}
-      sec.querySelector('.player').scrollIntoView({block:'center'});
-    };
-  });
-  v.addEventListener('timeupdate',function(){
-    var c=null;items.forEach(function(li){if(+li.querySelector('button').dataset.t<=v.currentTime+.25)c=li});
-    items.forEach(function(li){li.classList.toggle('now',li===c)});
-  });
-  v.addEventListener('play',function(){document.querySelectorAll('video').forEach(function(o){if(o!==v)o.pause()})});
-});
-var links=[].slice.call(document.querySelectorAll('nav.toc a'));
-if('IntersectionObserver' in window){
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-30% 0px -60% 0px'});
-  document.querySelectorAll('section[id]').forEach(function(s){io.observe(s)});
-}
+var seq=['n1','a1','n2','a2','n3','bk'],k=0;
+function step(){if(k<seq.length){document.getElementById(seq[k]).classList.add('on');k++;setTimeout(step,k%2?700:500)}else{setTimeout(function(){seq.forEach(function(i){document.getElementById(i).classList.remove('on')});k=0;setTimeout(step,600)},3200)}}
+if(matchMedia('(prefers-reduced-motion: reduce)').matches){seq.forEach(function(i){document.getElementById(i).classList.add('on')})}else step();
+document.querySelectorAll('video').forEach(function(v){v.addEventListener('play',function(){document.querySelectorAll('video').forEach(function(o){if(o!==v)o.pause()})})});
 </script>
-</body>
-</html>
+</body></html>
