@@ -30,6 +30,8 @@ h1{font-size:clamp(36px,5.4vw,58px);max-width:18ch}
 .model li:last-child .n{color:var(--clay)}
 .model h3{font-size:21px;margin:6px 0 6px}
 .model p{margin:0;font-size:15.5px;color:var(--muted);line-height:1.45}
+details.more{margin-top:18px}details.more summary{cursor:pointer;color:var(--muted);font-size:15px;font-weight:600}
+.model li{animation:rise .7s ease both}.model li:nth-child(2){animation-delay:.15s}.model li:nth-child(3){animation-delay:.3s}.player{animation:rise .8s ease both}@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.model li,.player{animation:none}}
 nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-block:1px solid var(--line);margin-top:34px}
 nav.toc ul{display:flex;gap:4px;margin:0;padding:9px 0;list-style:none;overflow-x:auto;scrollbar-width:none}
 nav.toc a{display:block;white-space:nowrap;text-decoration:none;font-size:14.5px;font-weight:500;color:var(--muted);padding:6px 12px;border-radius:999px}
@@ -78,9 +80,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <header class="hero">
 <p class="eyebrow">Supplementary material for anonymous peer review</p>
 <h1>TRACE, a prototype for authorizing AI work in a course</h1>
-<p class="lede">These silent videos follow one quiz from course materials to a released grade and a student's challenge of it. They show how a course-grounded workspace can represent three decisions that a single "approve" step would collapse.</p>
+<p class="lede">These narrated videos follow one quiz from course materials to a released grade and a student's challenge of it. They show how a course-grounded workspace can represent three decisions that a single "approve" step would collapse.</p>
 <ul class="meta">
-<li><b>4</b> videos</li><li><b>28</b> minutes in total</li><li>No sound</li><li><b>Demonstration data:</b> all names and records are synthetic</li>
+<li><b>4</b> narrated videos</li><li><b>28</b> minutes</li><li><b>Demonstration data:</b> all names and records are synthetic</li>
 </ul>
 </header>
 
@@ -105,10 +107,9 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <p class="kick">Video 1 &middot; 6:11</p>
 <h2>Source authorization</h2>
 <p class="sub">Before anything is generated, the instructor decides what the AI may build a quiz from, and says what the files cannot.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/01.jpg" src="media/01-source-authorization.mp4" aria-label="Source authorization demonstration, silent"></video></div>
-<div class="bar"><span>Select a step below to jump to it.</span><span class="speed"></span></div>
-<div class="grid">
-<ol class="steps">
+<div class="player"><video controls playsinline preload="metadata" poster="media/01.jpg" src="media/01-source-authorization.mp4" aria-label="Source authorization demonstration"></video></div>
+<div class="bar"><span></span><span class="speed"></span></div>
+<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="24"><time>0:24</time><span>Standing course context goes in <q>Instructions for TRACE</q>: a third-year cohort, mixed Arabic and English.</span></button></li>
 <li><button data-t="84"><time>1:24</time><span>A quiz is requested, and the instructor chooses which files it may be built from. One chapter is selected.</span></button></li>
 <li><button data-t="90"><time>1:30</time><span>A second chapter is left out, with a recorded reason: <q>We moved this chapter to after the midterm.</q></span></button></li>
@@ -118,17 +119,16 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <li><button data-t="363"><time>6:03</time><span>The <q>Authorization history</q> records what was authorized, what was left out and why, and who decided.</span></button></li>
 </ol>
 <aside class="why"><h3>Why it matters</h3><p>The excluded chapter is real course material that a retrieval system could use. Leaving it out is a teaching judgment that exists nowhere in the files.</p><p>Authorizing a source records permission. It does not prove the choice was right.</p></aside>
-</div>
+</div></details>
 </section>
 
 <section class="ch" id="artifact">
 <p class="kick">Video 2 &middot; 7:02</p>
 <h2>Artifact authorization</h2>
 <p class="sub">An AI-generated assessment stays a draft until the instructor accepts each question. Acceptance attaches to a version, not to the assessment.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/02.jpg" src="media/02-artifact-authorization.mp4" aria-label="Artifact authorization demonstration, silent"></video></div>
-<div class="bar"><span>Select a step below to jump to it.</span><span class="speed"></span></div>
-<div class="grid">
-<ol class="steps">
+<div class="player"><video controls playsinline preload="metadata" poster="media/02.jpg" src="media/02-artifact-authorization.mp4" aria-label="Artifact authorization demonstration"></video></div>
+<div class="bar"><span></span><span class="speed"></span></div>
+<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="18"><time>0:18</time><span>Every question is marked <q>Needs review</q>, and the footer reads <q>0 of 5 approved</q>.</span></button></li>
 <li><button data-t="42"><time>0:42</time><span>One question is excluded with a stated reason: <q>Too easy</q>.</span></button></li>
 <li><button data-t="105"><time>1:45</time><span>The instructor asks TRACE to rewrite a recall question, using a reason drawn from the lab rather than the slides.</span></button></li>
@@ -139,32 +139,30 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <li><button data-t="414"><time>6:54</time><span>The history records artifact authorization alongside the earlier decisions.</span></button></li>
 </ol>
 <aside class="why"><h3>Why it matters</h3><p>Generating work and accepting it are different actions. If AI later touches an approved question, the earlier approval does not carry over.</p><p>Approval records who stood behind a version. It does not certify that the version is correct.</p></aside>
-</div>
+</div></details>
 </section>
 
 <section class="ch" id="student">
 <p class="kick">Video 3a &middot; 5:29</p>
 <h2>Student submission</h2>
 <p class="sub">The student's side of the same quiz. This is short context for the next video.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/03a.jpg" src="media/03a-student-submission.mp4" aria-label="Student submission demonstration, silent"></video></div>
-<div class="bar"><span>Select a step below to jump to it.</span><span class="speed"></span></div>
-<div class="grid">
-<ol class="steps">
+<div class="player"><video controls playsinline preload="metadata" poster="media/03a.jpg" src="media/03a-student-submission.mp4" aria-label="Student submission demonstration"></video></div>
+<div class="bar"><span></span><span class="speed"></span></div>
+<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="27"><time>0:27</time><span>The student receives the quiz and types answers directly into the form.</span></button></li>
 <li><button data-t="267"><time>4:27</time><span>On the last question, the student answers with a technique from the lab: <q>In the lab we walked</q> through it. This answer is disputed later.</span></button></li>
 </ol>
 <aside class="why"><h3>Watch for</h3><p>The student's reasoning comes from a lab session, not from the slides. That gap is what the next video turns on.</p></aside>
-</div>
+</div></details>
 </section>
 
 <section class="ch conseq" id="consequence">
 <p class="kick">Video 3b &middot; 9:56</p>
 <h2>Consequence authorization</h2>
 <p class="sub">AI proposes a grade within seconds, but the student gets nothing until the instructor releases it. The student can then ask for the evidence to be reconsidered.</p>
-<div class="player"><video controls playsinline preload="metadata" poster="media/03b.jpg" src="media/03b-consequence-authorization.mp4" aria-label="Consequence authorization demonstration, silent"></video></div>
-<div class="bar"><span>Select a step below to jump to it.</span><span class="speed"></span></div>
-<div class="grid">
-<ol class="steps">
+<div class="player"><video controls playsinline preload="metadata" poster="media/03b.jpg" src="media/03b-consequence-authorization.mp4" aria-label="Consequence authorization demonstration"></video></div>
+<div class="bar"><span></span><span class="speed"></span></div>
+<details class="more"><summary>Show steps</summary><div class="grid"><ol class="steps">
 <li><button data-t="6"><time>0:06</time><span>The student sees <q>With your instructor</q>, with no mark and no feedback.</span></button></li>
 <li><button data-t="15"><time>0:15</time><span>The instructor sees <q>Reviewed &middot; Not released</q>. TRACE has proposed a grade, and no notification has been sent.</span></button></li>
 <li><button data-t="39"><time>0:39</time><span>The AI's proposal is open for inspection: 8 of 12, with feedback for each question.</span></button></li>
@@ -179,7 +177,7 @@ footer{margin-top:60px;padding:24px 0 54px;border-top:1px solid var(--line);colo
 <li><button data-t="588"><time>9:48</time><span>The history records each release, the request, and the withdrawal.</span></button></li>
 </ol>
 <aside class="why"><h3>Why it matters</h3><p>The student supplied classroom context the marking guide never held, and the system let that change the outcome.</p><p>Here the request returns to the instructor who approved the grade. That is a limit of this prototype, not a solution to recourse.</p></aside>
-</div>
+</div></details>
 </section>
 
 <section class="limits" id="limits">
